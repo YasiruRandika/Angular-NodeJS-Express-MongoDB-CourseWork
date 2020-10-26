@@ -1,0 +1,26 @@
+<!--Method 1 to Create a Post
+<mat-card>
+    <mat-form-field>
+        <input matInput type="text" [(ngModel)]="enteredTitle"> </mat-form-field>
+    <mat-form-field>
+        <textarea matInput [(ngModel)]="enteredContent">
+        </textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onAddPost()">Post</button>
+</mat-card>
+-->
+
+<mat-card>
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <input matInput type="text" name="title" #title="ngModel" placeholder="Post Title" ngModel required>
+            <mat-error *ngIf="title.invalid">Invalid Title</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput name="content" placeholder="Post Content" #content="ngModel" ngModel required>
+      </textarea>
+            <mat-error *ngIf="content.invalid">Invalid Content</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" name="content" type="submit">Post</button>
+    </form>
+</mat-card>
